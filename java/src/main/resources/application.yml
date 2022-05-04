@@ -1,0 +1,28 @@
+server:
+  port: 9966
+  
+spring:
+  application:
+    name: petclinic
+  data:
+    cassandra:
+      schema-action: create-if-not-exists
+
+astra:
+  api:
+    application-token: ${ASTRA_DB_ADMIN_TOKEN}
+    database-id: ${ASTRA_DB_ID}
+    database-region: ${ASTRA_DB_REGION}
+  cql:
+    enabled: true
+    download-scb:
+      enabled: true
+    driver-config:
+      basic:
+        session-keyspace: spring_petclinic
+      advanced:
+        connection:
+          init-query-timeout: 10s
+          set-keyspace-timeout: 10s
+        control-connection:
+          timeout: 10s

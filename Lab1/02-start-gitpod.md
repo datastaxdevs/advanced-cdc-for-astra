@@ -59,14 +59,13 @@
 1. Validate the connection with Astra Streaming broker by running the following command in the terminal
 
     ```bash
-    ./bin/pulsar-admin tenants list
+    ./bin/pulsar-admin namespaces list camp-constellation
     ```
 
     Output:
 
     ```logs
-    "public"
-    "camp-constellation"
+    "camp-constellation/default"
     ```
 
 ## Summary

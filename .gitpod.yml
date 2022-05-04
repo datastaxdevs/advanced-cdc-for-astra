@@ -2,7 +2,12 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  
+  # - name: ELK Stack
+  #   init: |
+  #     docker-compose pull
+  #   command: |
+  #     docker-compose up
+
   # ------------------------------------
   # Setup pulsar for Astra
   # ------------------------------------

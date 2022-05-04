@@ -27,7 +27,9 @@ set +a
 echo -e "${GREEN}[OK]${NC} - Database ID is ${BLUE}${ASTRA_DB_ID}${NC}"
 echo -e "${GREEN}[OK]${NC} - Database REGION is ${BLUE}${ASTRA_DB_REGION}${NC}"
 echo -e "${GREEN}[OK]${NC} - Database TOKEN is ${BLUE}${ASTRA_DB_ADMIN_TOKEN}${NC}"
-# mvn test -Dtest=com.datastax.workshop.petclinic.Test01_Connectivity >> instal.log
+cd /workspace/advanced-cdc-for-astra/java
+mvn test -Dtest=test.java.com.datastax.workshop.petclinic.Test01_Connectivity >> install.log
+cd /workspace/advanced-cdc-for-astra
 echo -e "${GREEN}[OK]${NC} - Secure Connect Bundle downloaded"
 echo -e "${GREEN}[OK]${NC} - Launching CQLSH...."
 /workspace/advanced-cdc-for-astra/cqlsh.sh
