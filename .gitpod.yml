@@ -2,18 +2,17 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  
   # ------------------------------------
   # Setup pulsar for Astra
   # ------------------------------------
-  - name: Astra-Streaming
-    init: |
-      gp open ./Lab1/02-start-gitpod.md
-      curl -O https://archive.apache.org/dist/pulsar/pulsar-2.9.2/apache-pulsar-2.9.2-bin.tar.gz
-      tar xfz ./apache-pulsar-2.9.2-bin.tar.gz
-    command: |
-      until [ -f ./apache-pulsar-2.9.2/bin/pulsar-admin ]; do sleep 1; done
-      cd ./apache-pulsar-2.9.2
+  # - name: Astra-Streaming
+  #   init: |
+  #     gp open ./Lab1/02-start-gitpod.md
+  #     curl -O https://archive.apache.org/dist/pulsar/pulsar-2.9.2/apache-pulsar-2.9.2-bin.tar.gz
+  #     tar xfz ./apache-pulsar-2.9.2-bin.tar.gz
+  #   command: |
+  #     until [ -f ./apache-pulsar-2.9.2/bin/pulsar-admin ]; do sleep 1; done
+  #     cd ./apache-pulsar-2.9.2
 
   # --------------------------------------
   #  SETUP CQLSH and Create DB Workshop
