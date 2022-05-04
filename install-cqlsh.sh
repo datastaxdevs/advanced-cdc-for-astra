@@ -9,26 +9,25 @@ echo -e "${BLUE}------------------------------------------------------------${NC
 echo -e "${BLUE}--            Installation of Cqlsh                      ---${NC}"
 echo -e "${BLUE}------------------------------------------------------------${NC}"
 echo -e " "
-mkdir /workspace/workshop-spring-reactive/tools 2>/dev/null
+mkdir /workspace/advanced-cdc-for-astra/tools 2>/dev/null
 echo -e "${GREEN}[OK]${NC} - Tools folder has been created"
-cd /workspace/workshop-spring-reactive/tools
+cd /workspace/advanced-cdc-for-astra/tools
 wget -q https://downloads.datastax.com/enterprise/cqlsh-astra.tar.gz >> install-cqlsh.log
 tar xvzf cqlsh-astra.tar.gz  >> install-cqlsh.log
 rm -f cqlsh-astra.tar.gz >> install-cqlsh.log
 echo -e "${GREEN}[OK]${NC} - Package has been downloaded"
-cd /workspace/workshop-spring-reactive >> install-cqlsh.log
-echo -e "${GREEN}[OK]${NC} - We will now as you about your ASTRA TOKEN (AstraCS....)"
+cd /workspace/advanced-cdc-for-astra >> install-cqlsh.log
 
-cd /workspace/workshop-spring-reactive
+cd /workspace/advanced-cdc-for-astra
 npm install --silent astra-setup
-npm exec -y astra-setup workshops spring_petclinic
+npm exec -y astra-setup camp-constellation crud_data
 set -a
-source /workspace/workshop-spring-reactive/.env
+source /workspace/advanced-cdc-for-astra/.env
 set +a
 echo -e "${GREEN}[OK]${NC} - Database ID is ${BLUE}${ASTRA_DB_ID}${NC}"
 echo -e "${GREEN}[OK]${NC} - Database REGION is ${BLUE}${ASTRA_DB_REGION}${NC}"
 echo -e "${GREEN}[OK]${NC} - Database TOKEN is ${BLUE}${ASTRA_DB_ADMIN_TOKEN}${NC}"
-mvn test -Dtest=com.datastax.workshop.petclinic.Test01_Connectivity >> instal.log
+# mvn test -Dtest=com.datastax.workshop.petclinic.Test01_Connectivity >> instal.log
 echo -e "${GREEN}[OK]${NC} - Secure Connect Bundle downloaded"
 echo -e "${GREEN}[OK]${NC} - Launching CQLSH...."
-./cqlsh
+/workspace/advanced-cdc-for-astra/cqlsh.sh

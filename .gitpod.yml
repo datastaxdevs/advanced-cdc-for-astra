@@ -11,20 +11,20 @@ tasks:
       curl -O https://archive.apache.org/dist/pulsar/pulsar-2.9.2/apache-pulsar-2.9.2-bin.tar.gz
       tar xfz ./apache-pulsar-2.9.2-bin.tar.gz
     command: |
-      cd ./apache-pulsar-2.9.2
+      cd /workspace/advanced-cdc-for-astra/apache-pulsar-2.9.2
 
-#   # --------------------------------------
-#   #  SETUP CQLSH and Create DB Workshop
-#   # --------------------------------------
-#   - name: Astra DB
-#     env:
-#         CQLENG_ALLOW_SCHEMA_MANAGEMENT: 1
-#     before: |
-#       chmod 700 ./install-cqlsh
-#       chmod 700 ./cqlsh
-#     command: |
-#       ./install-cqlsh
-#       ./cqlsh
+  # --------------------------------------
+  #  SETUP CQLSH and Create DB Workshop
+  # --------------------------------------
+  - name: Astra DB
+    env:
+        CQLENG_ALLOW_SCHEMA_MANAGEMENT: 1
+    before: |
+      chmod 700 /workspace/advanced-cdc-for-astra/install-cqlsh.sh
+      chmod 700 /workspace/advanced-cdc-for-astra/cqlsh.sh
+    command: |
+      /workspace/advanced-cdc-for-astra/install-cqlsh.sh
+      /workspace/advanced-cdc-for-astra/cqlsh.sh
 
 github:
   prebuilds:
