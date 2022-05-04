@@ -6,7 +6,7 @@ tasks:
   # ------------------------------------
   # Setup pulsar for Astra
   # ------------------------------------
-  - name: Astra Streaming
+  - name: Astra_Streaming
     init: |
       gp open ./Lab1/02-start-gitpod.md
       curl -O https://archive.apache.org/dist/pulsar/pulsar-2.9.2/apache-pulsar-2.9.2-bin.tar.gz
@@ -18,7 +18,7 @@ tasks:
   # --------------------------------------
   #  SETUP CQLSH and Create DB Workshop
   # --------------------------------------
-  - name: Astra DB
+  - name: Astra_DB
     env:
         CQLENG_ALLOW_SCHEMA_MANAGEMENT: 1
     before: |
