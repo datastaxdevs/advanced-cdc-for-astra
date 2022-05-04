@@ -2,11 +2,6 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  # - name: ELK Stack
-  #   init: |
-  #     docker-compose pull
-  #   command: |
-  #     docker-compose up
 
   # ------------------------------------
   # Setup pulsar for Astra
@@ -30,6 +25,15 @@ tasks:
     command: |
       /workspace/advanced-cdc-for-astra/install-cqlsh.sh
       /workspace/advanced-cdc-for-astra/cqlsh.sh
+      
+  # --------------------------------------
+  #  SETUP ELK stack for sink store
+  # --------------------------------------
+  - name: ELK Stack
+    init: |
+      docker-compose pull
+    command: |
+      docker-compose up
 
 github:
   prebuilds:

@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  elasticsearch:
+    image: elasticsearch:7.10.1
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+    ports:
+      - '9200:9200'
+      - '9300:9300'
