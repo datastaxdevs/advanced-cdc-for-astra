@@ -1,0 +1,61 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  
+
+  # ------------------------------------
+  # SETUP USER INTERFACE
+  # ------------------------------------
+  - name: spring-petclinic-angular
+    init: |
+      gp open README.md
+      cd /workspace/workshop-spring-reactive/spring-petclinic-angular
+      npm install --silent
+      npm run build --silent
+    command: |
+      cd /workspace/workshop-spring-reactive/spring-petclinic-angular
+      echo "export const environment = {production: false, REST_API_URL: '$(gp url 9966)/petclinic/api/'};" > /workspace/workshop-spring-reactive/spring-petclinic-angular/src/environments/environment.ts 
+    env:
+      NG_CLI_ANALYTICS: ci
+  - name: spring-petclinic-reactive
+    command: |
+     mvn clean
+  # --------------------------------------
+  #  SETUP CQLSH and Create DB Workshop
+  # --------------------------------------
+  - name: cqlsh
+    env:
+        CQLENG_ALLOW_SCHEMA_MANAGEMENT: 1
+    before: |
+      chmod 700 /workspace/workshop-spring-reactive/install-cqlsh
+      chmod 700 /workspace/workshop-spring-reactive/cqlsh
+    command: |
+      ./install-cqlsh
+      ./cqlsh
+         
+     
+ports:
+  - port: 4200
+    onOpen: open-browser
+    visibility: public
+  - port: 9966
+    onOpen: open-browser
+    visibility: public
+
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: false
+    addCheck: true
+    addComment: false
+    addBadge: true
+    addLabel: false
+
+vscode:
+  extensions:
+    - GabrielBB.vscode-lombok
+    - vscjava.vscode-java-pack
+    - Pivotal.vscode-boot-dev-pack
