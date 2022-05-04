@@ -27,13 +27,25 @@ tasks:
       /workspace/advanced-cdc-for-astra/cqlsh.sh
       
   # --------------------------------------
-  #  SETUP ELK stack for sink store
+  #  SETUP ELK stack for sink store and observability
   # --------------------------------------
-  - name: ELK Stack
-    init: |
-      docker-compose pull
+  - name: Elasticsearch
     command: |
-      docker-compose up
+      docker run --name elasticsearch -e discovery.type=single-node -p 9200:9200 -p 9300:9300 -t docker.elastic.co/elasticsearch/elasticsearch:8.2.0
+  - name: Kibana
+    command: |
+      docker run --name kibana -p 5601:5601 docker.elastic.co/kibana/kibana:8.2.0
+
+ports:
+  - port: 9300
+    onOpen: ignore
+    visibility: public
+  - port: 9200
+    onOpen: ignore
+    visibility: public
+  - port: 5601
+    onOpen: open-browser
+    visibility: public
 
 github:
   prebuilds:
