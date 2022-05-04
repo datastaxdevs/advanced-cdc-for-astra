@@ -4,6 +4,8 @@
 
 ## GitPod Environment
 
+In this module you will be configuring all the needed services and cli connections. This will be needed in the next module as well as the challenge.
+
 1. Start the GitPod environment by clicking the button below
 
     [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/ddieruf/advanced-cdc-for-astra)
@@ -16,15 +18,15 @@
 
     The initialization will complete with access to `cqlsh`.
 
-    ```
+    ```bash
     ...
 
     ✔ Please paste the Database Admin Token here
-    ***********
-    Credentials set up, checking database
-    
-    ...
+    ```
 
+    Once validated a cqlsh session will open automatically
+
+    ```log
     [OK] - Launching CQLSH....
     Connected to cndb at 127.0.0.1:9042.
     [cqlsh 6.8.0 | Cassandra 4.0.0.6816 | CQL spec 3.4.5 | Native protocol v4]
@@ -41,7 +43,9 @@
     Output:
 
     ```
-    crud-data
+    system_virtual_schema  system_views  datastax_sla      
+    system_schema          system        data_endpoint_auth
+    system_auth            crud_data     system_traces  
     ```
 
 1. Looking to the left navigation, open the '[apache-pulsar-2.9.2/conf/client.conf](/workspace/advanced-cdc-for-astra/apache-pulsar-2.9.2/conf/client.conf)' file
@@ -70,4 +74,6 @@
 
 ## Summary
 
-asdasdasd
+Your GitPod environment has configured the Pulsar binaries to interact with your Astra Streaming Pulsar broker, you have a working cqlsh session with your Astra DB, and you have a publicly accessible, configured ELK stack.
+
+With these services you are now ready for the next module, as well as the upcoming challenge. Click the link at the top of the page to continue.

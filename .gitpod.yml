@@ -44,7 +44,7 @@ ports:
     onOpen: ignore
     visibility: public
   - port: 5601
-    onOpen: open-browser
+    onOpen: ignore
     visibility: public
 
 github:
@@ -63,4 +63,3 @@ vscode:
     - GabrielBB.vscode-lombok
     - vscjava.vscode-java-pack
     - Pivotal.vscode-boot-dev-pack
-    - matt-rudge.auto-open-preview-panel
