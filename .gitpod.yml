@@ -3,45 +3,30 @@ image:
 
 tasks:
   
-
   # ------------------------------------
-  # SETUP USER INTERFACE
+  # Setup pulsar for Astra
   # ------------------------------------
-  - name: spring-petclinic-angular
+  - name: Astra Streaming
     init: |
-      gp open README.md
-      cd /workspace/workshop-spring-reactive/spring-petclinic-angular
-      npm install --silent
-      npm run build --silent
+      gp open ./Lab1/02-start-gitpod.md
+      curl -O https://archive.apache.org/dist/pulsar/pulsar-2.9.2/apache-pulsar-2.9.2-bin.tar.gz
+      tar xfz ./apache-pulsar-2.9.2-bin.tar.gz
     command: |
-      cd /workspace/workshop-spring-reactive/spring-petclinic-angular
-      echo "export const environment = {production: false, REST_API_URL: '$(gp url 9966)/petclinic/api/'};" > /workspace/workshop-spring-reactive/spring-petclinic-angular/src/environments/environment.ts 
-    env:
-      NG_CLI_ANALYTICS: ci
-  - name: spring-petclinic-reactive
-    command: |
-     mvn clean
+      until [ -f ./apache-pulsar-2.9.2/bin/pulsar-admin ]; do sleep 1; done=
+      cd ./apache-pulsar-2.9.2
+
   # --------------------------------------
   #  SETUP CQLSH and Create DB Workshop
   # --------------------------------------
-  - name: cqlsh
+  - name: Astra DB
     env:
         CQLENG_ALLOW_SCHEMA_MANAGEMENT: 1
     before: |
-      chmod 700 /workspace/workshop-spring-reactive/install-cqlsh
-      chmod 700 /workspace/workshop-spring-reactive/cqlsh
+      chmod 700 ./install-cqlsh
+      chmod 700 ./cqlsh
     command: |
       ./install-cqlsh
       ./cqlsh
-         
-     
-ports:
-  - port: 4200
-    onOpen: open-browser
-    visibility: public
-  - port: 9966
-    onOpen: open-browser
-    visibility: public
 
 github:
   prebuilds:
@@ -59,3 +44,4 @@ vscode:
     - GabrielBB.vscode-lombok
     - vscjava.vscode-java-pack
     - Pivotal.vscode-boot-dev-pack
+    - matt-rudge.auto-open-preview-panel
