@@ -1,0 +1,9 @@
+py: /workspace/advanced-cdc-for-astra/resources/python-function/decisions-function.py
+parallelism: 1
+inputs:
+  - persistent://public/default/decisions-input-topic
+output: persistent://public/default/decisions-output-topic
+tenant: public
+namespace: default
+name: DecisionsFunction
+logTopic: persistent://public/default/decisions-function-logs

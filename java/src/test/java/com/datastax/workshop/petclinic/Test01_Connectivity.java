@@ -1,10 +1,8 @@
-package test.java.com.datastax.workshop.petclinic;
+package com.datastax.workshop.petclinic;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import main.java.com.datastax.workshop.petclinic.PetClinicApplication;
 
 import com.datastax.astra.sdk.AstraClient;
 import com.datastax.astra.sdk.databases.domain.Database;

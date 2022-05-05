@@ -17,21 +17,23 @@ The basic outline you should follow to complete the challenge:
 1. Create schema
 
     ```sql
-    use camp-constellation;
+    use crud_data;
 
     CREATE TABLE IF NOT EXISTS posts (
     id          uuid,
-    first_name  text,
-    tags set<text>,
+    postTypeId  int,
+    body        text,
+    tags        set<text>,
     PRIMARY KEY ((id))
     );
     ```
 
 1. Enable CDC on `posts` table
+
 1. Load the Java filtering function
 
     ```bash
-    ./bin/pulsar-admin functions create --function-config-file ../resources/filtering-function.yaml
+    ./bin/pulsar-admin functions create --function-config-file ../resources/tags-function.yaml
     ```
 
 1. Load the Python decisions function
@@ -40,10 +42,12 @@ The basic outline you should follow to complete the challenge:
     ./bin/pulsar-admin functions create --function-config-file ../resources/decisions-function.yaml
     ```
 
-1. Create the sink to Elastic stack
+1. Create the sink to Elasticsearch
 
     ```bash
-    ./bin/pulsar-admin sink create --function-config-file ../resources/xxxxxxx
+    ./bin/pulsar-admin sinks create \
+        --archive ../resources/pulsar-io-elastic-search-2.9.2.nar \
+        --source-config-file ../resources/elasticsearch-sink.yaml
     ```
 
 1. Add a few posts

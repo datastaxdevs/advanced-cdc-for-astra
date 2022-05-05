@@ -6,7 +6,7 @@
 
 The goal of this module is to observe how CDC for Astra manages data and schema change.You will be using the previously configured GitPod environment to perform basic create, update, and delete commands on a data table and observing how those changes were transformed into broker messages. Then you'll be changing the data table's schema to see how that affects the message structure.
 
-1. Go to the `cqlsh` terminal and run the following command
+1. Go to the `Astra DB` terminal and run the following command
 
     ```sql
     insert into testing_crud('first_name','specialties') values ('asdf', {'bird', 'cat', 'dog', 'lizard','hamster','snake'})
@@ -15,7 +15,7 @@ The goal of this module is to observe how CDC for Astra manages data and schema 
     delete from testing_crud where 'first_name' = 'asdf'
     ```
 
-1. Go to the `pulsar` terminal to observe the new CDC messages
+1. Go to the `Astra Streaming` terminal to observe the new CDC messages
 
     ```logs
     

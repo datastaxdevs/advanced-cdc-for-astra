@@ -1,6 +1,5 @@
-package main.java.com.datastax.workshop.petclinic;
+package com.datastax.workshop.petclinic;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**

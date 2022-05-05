@@ -72,6 +72,16 @@ In this module you will be configuring all the needed services and cli connectio
     "camp-constellation/default"
     ```
 
+1. Open the terminal session named 'Elasticsearch', from the lower right corner
+
+1. The output should show a license key, select and copy that key to clipboard
+
+1. Open the terminal session named 'Kibana', from the lower right corner
+
+1. Click the link displaied to open the Kibana dashboard. It will ask for the key you previously copied. Paste and submit the key.
+
+1. The two services will be connected and Kibana will redirect to its main dashboard
+
 ## Summary
 
 Your GitPod environment has configured the Pulsar binaries to interact with your Astra Streaming Pulsar broker, you have a working cqlsh session with your Astra DB, and you have a publicly accessible, configured ELK stack.
