@@ -4,7 +4,7 @@
 
 ## GitPod Environment
 
-In this module you will be configuring all the needed services and cli connections. This will be needed in the next module as well as the challenge.
+In this module you will be configuring all the needed services and cli connections. These will be needed through the lab as well as the challenge.
 
 1. Start the GitPod environment by clicking the button below
 
@@ -27,6 +27,22 @@ In this module you will be configuring all the needed services and cli connectio
     Once validated a cqlsh session will open automatically
 
     ```log
+    Credentials set up, checking database
+    Looking for camp-constellation
+        camp-constellation: Current status is ACTIVE
+            ... status is ACTIVE
+        existing camp-constellation database found.
+    Looking for crud_data keyspace
+        keyspace crud_data already exists
+    Setting up secure bundle
+    .cassandra Directory created successfully!
+
+    Deleted file: cqlshrc
+    [OK] - Database ID is 40e2d3c8-ffb2-46c6-b6bc-283d7bb3e547
+    [OK] - Database REGION is us-central1
+    [OK] - Database TOKEN is AstraCS:WoCEFZzskLpWyUiPBzwulGxO:1bf505ed13f23eaa9d39b461142308612be9a01f80765f90b0dcca793f47058d
+    Picked up JAVA_TOOL_OPTIONS:  -Xmx3435m
+    [OK] - Secure Connect Bundle downloaded
     [OK] - Launching CQLSH....
     Connected to cndb at 127.0.0.1:9042.
     [cqlsh 6.8.0 | Cassandra 4.0.0.6816 | CQL spec 3.4.5 | Native protocol v4]
