@@ -9,34 +9,36 @@ The goal of this module is to observe how CDC for Astra manages data and schema 
 1. Go to the `Astra DB` terminal and run the following command
 
     ```sql
-    insert into testing_crud('first_name','specialties') values ('asdf', {'bird', 'cat', 'dog', 'lizard','hamster','snake'})
-    update testing_crud set 'specialties' = {'red','green','blue'} where 'first_name' = 'asdf'
-    delete from testing_crud where 'first_name' = '111'
-    delete from testing_crud where 'first_name' = 'asdf'
+    insert into crud_data.testing_crud(id, first_name) values (eba95eb2-cd52-11ec-9d64-0242ac120002,'Bob');
     ```
 
-1. Go to the `Astra Streaming` terminal to observe the new CDC messages
+1. Go to the `Astra Streaming` terminal to observe what content was included in the action
 
     ```logs
-    
-    ...
-    
     ----- got message -----
-    asdasdasd
-    ----- got message -----
-    asdasdasd
-    ----- got message -----
-    asdasdasd
-    ----- got message -----
-    asdasdasd
+    Key:[SGViYTk1ZWIyLWNkNTItMTFlYy05ZDY0LTAyNDJhYzEyMDAwMg==], properties:[], content: xxxxx
+    ```
 
+1. Go back to the `Astra DB` terminal and run the following command
+
+    ```sql
+    update crud_data.testing_crud set first_name = 'Harry' where id=eba95eb2-cd52-11ec-9d64-0242ac120002;
+    ```
+
+1. An then to the `Astra Streaming` terminal to see the message content
+
+1. Repeat this for one last command
+
+    ```sql
+    delete from testing_crud where id=eba95eb2-cd52-11ec-9d64-0242ac120002;
     ```
 
 ## Summary
 
-When adding a new record into a table that does not have a compatible data type with CDC, the data is dropped.
-When updating a record only the updated data is transmitted.
-Sql errors don't register in CDC.
-Delata statements transmit the removed data.
+Facts about CDC for Astra:
+- When adding a new record into a table that does not have a compatible data type with CDC, the data is dropped.
+- When updating a record only the updated data is transmitted.
+- Sql errors don't register in CDC.
+- Delta statements transmit the removed data.
 
 Click the link at the top of the page to continue.

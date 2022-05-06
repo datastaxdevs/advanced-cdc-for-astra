@@ -17,10 +17,8 @@ The basic outline you should follow to complete the challenge:
 1. Create schema
 
     ```sql
-    use crud_data;
-
-    CREATE TABLE IF NOT EXISTS posts (
-    id          uuid,
+    CREATE TABLE IF NOT EXISTS crud_data.posts (
+    id          int,
     postTypeId  int,
     body        text,
     tags        set<text>,
