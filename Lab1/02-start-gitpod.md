@@ -88,34 +88,6 @@ In this module you will be configuring all the needed services and cli connectio
     "camp-constellation/default"
     ```
 
-1. Open the terminal session named `Elasticsearch`, from the lower right corner
-
-    ![Elastic Search Terminal](/images/terminal-elasticsearch.png)
-
-1. The output should show a license key, select and copy that key to clipboard
-
-    ![Elasticsearch License](/images/elasticsearch-license.png)
-
-1. Open the terminal session named `Kibana`, from the lower right corner
-
-    ![Kibana Terminal](/images/terminal-kibana.png)
-
-1. Click the link displaied to open the Kibana dashboard. It will ask for the key you previously copied. Paste and submit the key.
-
-    ![Kibana Link](/images/kibana-link.png)
-
-    > This will link the Kibana serivce and the Elastcisearch service. You will be redirected to the Kibana login.
-
-1. You will need the login information for Kibana as a part of creating the Elasticsearch sink in Astra Streaming, as well as accessing Kibana features. Open the `Elasticsearch` terminal and scroll up to find the license key area. Find the "Password for the elastic user" and copy that value to notepad.
-
-    ![Elasticsearch Password](/images/elasticsearch-password.png)
-
-1. Go back to the Kibana login and use a username of `elastic` with the password
-
-    ![Kibana Login](/images/kibana-login.png)
-
-> Once logged in, if Kibana asks to "Add Integrations" choose "explore on my own".
-
 ## Summary
 
 Your GitPod environment has configured the Pulsar binaries to interact with your Astra Streaming Pulsar broker, you have a working cqlsh session with your Astra DB, and you have a publicly accessible, configured ELK stack.

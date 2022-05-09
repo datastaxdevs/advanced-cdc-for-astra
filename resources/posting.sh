@@ -22,7 +22,8 @@ parse_dom () {
             
         local t=${Tags//&gt;/,};
 
-        echo "insert into posts(postTypeId, body, Tags) values('"$PostTypeId"', '"${Body//\'/\'\'}"', "{${t//&lt;/}}");";
+        insert into posts(postTypeId, body, Tags, CreationDate, Score, ViewCount, AnswerCount, Title) \
+          values('"$PostTypeId"', '"${Body//\'/\'\'}"', "{${t//&lt;/}}", '"$CreationDate"',"$Score", "$ViewCount", "$AnswerCount",'"${Title//\'/\'\'}"');
             # $Id
             # $PostTypeId
             # $AcceptedAnswerId

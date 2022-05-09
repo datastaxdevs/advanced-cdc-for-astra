@@ -1,13 +1,13 @@
-name: ElasticSink
-tenant: public
-namespace: default
+name: elastic-search-idx
+tenant: camp-constellation
+namespace: astracdc
 inputs:
-  - persistent://public/default/es-sink-topic
+  - persistent://camp-constellation/astracdc/decisions-output-topic
 autoAck: true
+sinkType: elastic_search
 parallelism: 1
-sink-type: elastic-search
 configs:
-  elasticSearchUrl: "<REPLACE>"
-  indexName: "es_sink_index"
+  indexName: "<REPLACE_THIS>"
+  elasticSearchUrl: "https://camp-constellation.es.us-central1.gcp.cloud.es.io:9243"
   username: "elastic"
-  password: "<REPLACE>"
+  password: "DKSm73wFw2qVYnmpJjrjdbvB"

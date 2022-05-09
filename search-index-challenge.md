@@ -14,49 +14,77 @@ The challenge is to create a search index from a collection of Stack Overflow po
 
 The basic outline you should follow to complete the challenge:
 
-1. Create schema
+Database schema to enable CDC
 
-    ```sql
-    CREATE TABLE IF NOT EXISTS crud_data.posts (
-    id          int,
-    postTypeId  int,
-    body        text,
-    tags        set<text>,
-    PRIMARY KEY ((id))
-    );
-    ```
+```sql
+CREATE TABLE IF NOT EXISTS crud_data.posts (
+id          int,
+postTypeId  int,
+title        text,
+body        text,
+creationDate dateTime,
+tags        set<text> NULL,
+score       int NULL,
+viewCount   int NULL,
+answerCount int NULL
+PRIMARY KEY ((id))
+);
+```
 
-1. Enable CDC on `posts` table
+### Message Processing Functions
 
-1. Load the Java filtering function
+#### Java
 
-    ```bash
-    ./bin/pulsar-admin functions create --function-config-file ../resources/tags-function.yaml
-    ```
+> Update `resources/conversion-function.yaml` with your cdc topic name
 
-1. Load the Python decisions function
+```bash
+./bin/pulsar-admin topics create persistent://camp-constellation/astracdc/conversion-output-topic
+./bin/pulsar-admin topics create persistent://camp-constellation/astracdc/conversion-function-logs
+```
 
-    ```bash
-    ./bin/pulsar-admin functions create --function-config-file ../resources/decisions-function.yaml
-    ```
+```bash
+# Did you remember to set the function topic name??
 
-1. Create the sink to Elasticsearch
+./bin/pulsar-admin functions create --function-config-file ../resources/conversion-function.yaml
+```
 
-    ```bash
-    ./bin/pulsar-admin sinks create \
-        --archive ../resources/pulsar-io-elastic-search-2.9.2.nar \
-        --source-config-file ../resources/elasticsearch-sink.yaml
-    ```
+#### Python
 
-1. Add a few posts
+```bash
+./bin/pulsar-admin topics create persistent://camp-constellation/astracdc/decisions-output-topic
+./bin/pulsar-admin topics create persistent://camp-constellation/astracdc/decisions-function-logs
+```
 
-    ```bash
-    ./resources/data-loader.sh -posts=10 -latency=1000
-    ```
+```bash
+./bin/pulsar-admin functions create --function-config-file ../resources/decisions-function.yaml
+```
+
+### Elastic Search
+
+> Update `resources/elasticsearch-sink.yaml` with a valid index name
+
+```bash
+# Did you remember to set the index name??
+
+./bin/pulsar-admin sinks create \
+    --archive ../resources/pulsar-io-elastic-search-2.9.2.nar \
+    --sink-config-file ../resources/elasticsearch-sink.yaml
+```
+
+### Load Data
+Add a few posts
+
+```bash
+SOURCE './resources/insert-10-posts.sql'
+```
+
+### Observe Index
 
 1. Build a data view in Kibana
 
 1. View the indexed data in Kibana
+
+### Load Bulk Data
 
 1. Start to add a large batch of posts in the background
 
@@ -69,3 +97,9 @@ The basic outline you should follow to complete the challenge:
 ## Summary
 
 Armed with your new CDC skills go to your customers, ask for their architectures, hear their pains, and heal all their hurts. You have reached ninja status.
+
+## Troubleshooting
+
+- Notice the data table has a "tags" column of type `set<text>` but it was lost during conversion. Thats because the data type is currecntly supported by CDC for Astra, so it is quietly dropped.
+
+- Each function has its own logging topic. You could start a new consumer that watches a given logging topic to see exception details.
