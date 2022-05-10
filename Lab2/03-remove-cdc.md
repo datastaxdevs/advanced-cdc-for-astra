@@ -6,6 +6,8 @@
 
 In this final module you will turn off CDC and observe what effects it (doesn't) have on things.
 
+1. Open the `Astra Streaming` terminal and close the subscription to the CDC topic by pressing "cntl+c".
+
 1. Navigate back to your Astra account, to the CDC tab of your serverless database and disable the CDC feature
 
     ![Disable CDC](/images/disable-cdc.png)

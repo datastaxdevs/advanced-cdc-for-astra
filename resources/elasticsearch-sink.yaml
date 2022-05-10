@@ -1,8 +1,8 @@
 name: elastic-search-idx
-tenant: camp-constellation
+tenant: <NAME>-camp-const
 namespace: astracdc
 inputs:
-  - persistent://camp-constellation/astracdc/decisions-output-topic
+  - persistent://<NAME>-camp-const/astracdc/decisions-output-topic
 autoAck: true
 sinkType: elastic_search
 parallelism: 1

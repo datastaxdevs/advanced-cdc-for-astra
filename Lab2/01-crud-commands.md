@@ -16,7 +16,10 @@ The goal of this module is to observe how CDC for Astra manages data and schema 
 
     ```logs
     ----- got message -----
-    Key:[SGViYTk1ZWIyLWNkNTItMTFlYy05ZDY0LTAyNDJhYzEyMDAwMg==], properties:[], content: xxxxx
+
+    ...
+
+    key:[SGViYTk1ZWIyLWNkNTItMTFlYy05ZDY0LTAyNDJhYzEyMDAwMg==], properties:[], content:{key={id=eba95eb2-cd52-11ec-9d64-0242ac120002}, value={first_name=Bob}}
     ```
 
 1. Go back to the `Astra DB` terminal and run the following command
@@ -30,13 +33,13 @@ The goal of this module is to observe how CDC for Astra manages data and schema 
 1. Repeat this for one last command
 
     ```sql
-    delete from testing_crud where id=eba95eb2-cd52-11ec-9d64-0242ac120002;
+    delete from crud_data.testing_crud where id=eba95eb2-cd52-11ec-9d64-0242ac120002;
     ```
 
 ## Summary
 
 Facts about CDC for Astra:
-- When adding a new record into a table that does not have a compatible data type with CDC, the data is dropped.
+- When adding a new record into a table that does not have a compatible data type with CDC, the data is dropped. [Here](https://docs.datastax.com/en/astra/docs/astream-cdc.html) is a list of compatible types.
 - When updating a record only the updated data is transmitted.
 - Sql errors don't register in CDC.
 - Delta statements transmit the removed data.

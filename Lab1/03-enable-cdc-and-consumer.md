@@ -18,7 +18,7 @@ In this quick module you will be enabling CDC for Astra on a new data table with
 
 1. Toggle back to your Astra account and enable CDC on the table
 
-    Tenant: "pulsar-gcp-uscentral1 / camp-constellation"
+    Tenant: "pulsar-gcp-uscentral1 / <NAME>-camp-const"
 
     Keyspace: "crud-data"
 
@@ -31,7 +31,7 @@ In this quick module you will be enabling CDC for Astra on a new data table with
 1. In the GitPod environment, go to the `Astra Streaming` terminal and list topics
 
     ```bash
-    ./bin/pulsar-admin topics list "camp-constellation/astracdc"
+    ./bin/pulsar-admin topics list "<NAME>-camp-const/astracdc"
     ```
 
     Output:
@@ -50,7 +50,7 @@ In this quick module you will be enabling CDC for Astra on a new data table with
 1. Use the topic name to start a long running consumer that watches for new messages
 
     ```bash
-    ./bin/pulsar-client consume -st auto_consume persistent://camp-constellation/astracdc/data-<REPLACE_WITH_ALPHANUMERIC>-crud_data.testing_crud
+    ./bin/pulsar-client consume -st auto_consume -s "crud-subscriber" persistent://<NAME>-camp-const/astracdc/data-<REPLACE_WITH_ALPHANUMERIC>-crud_data.testing_crud
     ```
 
     > There will be quite a bit of output with the last few lines like below:

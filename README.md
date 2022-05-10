@@ -4,7 +4,7 @@ A workshop for learning advanced solutions using CDC for Astra
 
 # Labs/Modules
 
-Lab 1: Creating the environment in Astra (10 minutes) [get started](/Lab1/01-setup-astra.md)
+Lab 1: Creating the environment in Astra (5 minutes) [get started](/Lab1/01-setup-astra.md)
 - Login to Astra account
 - Create a new database in GCP/us-central1
 - Create a new streaming tenant in GCP/us-central1
@@ -17,7 +17,7 @@ Lab 1: Creating the environment in Astra (10 minutes) [get started](/Lab1/01-set
 - Enable CDC for Astra on both tables
 - Start a long running consumer on the data topic of the table
 
-Lab 2: CRUD actions on a table and its schema (10 minutes) [get started](/Lab2/01-crud-commands.md)
+Lab 2: CRUD actions on a table and its schema (5 minutes)
 - Using cql console, execute multiple commands to insert, update, and delete records
 - Observe the messages in GitPod terminal showing a confirmation of all these actions
     - !notice one of data columns were dropped because of an invalid data type
@@ -28,7 +28,7 @@ Lab 2: CRUD actions on a table and its schema (10 minutes) [get started](/Lab2/0
 - Stop the consumer
 - Disable CDC on table
 
-Challenge: Creating a site search index with CDC (30 minutes)
+Challenge: Creating a site search index with CDC (30 minutes) [get started](/search-index-challenge.md)
 - Using cql console, create schema of 2 data tables
 - Enable CDC for Astra on both tables (use existing streaming tenant)
 - Create a new streaming topic to hold tagged posts

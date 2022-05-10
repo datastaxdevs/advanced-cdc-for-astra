@@ -26,7 +26,7 @@ This module will get your Astra account ready for the next mododules by creating
 
 1. Create a new streaming tenant
 
-    Name: `camp-constellation`
+    Name: `<NAME>-camp-const`
 
     Region: Google Cloud >> uscentral1
 

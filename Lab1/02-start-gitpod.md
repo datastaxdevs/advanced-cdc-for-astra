@@ -79,13 +79,13 @@ In this module you will be configuring all the needed services and cli connectio
 1. Validate the connection with Astra Streaming broker by running the following command in the terminal
 
     ```bash
-    ./bin/pulsar-admin namespaces list camp-constellation
+    ./bin/pulsar-admin namespaces list <NAME>-camp-const
     ```
 
     Output:
 
     ```logs
-    "camp-constellation/default"
+    "<NAME>-camp-const/default"
     ```
 
 ## Summary

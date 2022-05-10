@@ -2,9 +2,9 @@ py: /workspace/advanced-cdc-for-astra/resources/python-function/decisions-functi
 className: decisions-function.DecisionsFunction
 parallelism: 1
 inputs:
-  - persistent://camp-constellation/astracdc/tags-output-topic
-output: persistent://camp-constellation/astracdc/decisions-output-topic
-tenant: camp-constellation
+  - persistent://<NAME>-camp-const/astracdc/conversion-output-topic
+output: persistent://<NAME>-camp-const/astracdc/decisions-output-topic
+tenant: <NAME>-camp-const
 namespace: astracdc
 name: decisions-function
-logTopic: persistent://camp-constellation/astracdc/decisions-function-logs
+logTopic: persistent://<NAME>-camp-const/astracdc/decisions-function-logs
