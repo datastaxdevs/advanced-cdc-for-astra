@@ -2,6 +2,10 @@
 
 A workshop for learning advanced solutions using CDC for Astra
 
+# Pre-requisits
+
+You will need expanded cloud access in Astra so your DB and streaming tenant can be in the same region. Request access [here](https://forms.gle/9y5gYrjeh8Qz9Y457).
+
 # Labs/Modules
 
 Lab 1: Creating the environment in Astra (5 minutes) [get started](/Lab1/01-setup-astra.md)
