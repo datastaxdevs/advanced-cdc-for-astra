@@ -18,8 +18,8 @@ class DecisionsFunction(Function):
     if (so_post["_postTypeId"] != 1):
       return
 
-    # No scores under 20
-    if (so_post["_score"] < 20):
+    # No scores under 5
+    if (so_post["_score"] < 5):
       return
     
     # Nothing that is unanswered

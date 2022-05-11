@@ -50,7 +50,7 @@ In this quick module you will be enabling CDC for Astra on a new data table with
 1. Use the topic name to start a long running consumer that watches for new messages
 
     ```bash
-    ./bin/pulsar-client consume -st auto_consume -s "crud-subscriber" persistent://<NAME>-camp-const/astracdc/data-<REPLACE_WITH_ALPHANUMERIC>-crud_data.testing_crud
+    ./bin/pulsar-client consume -n 0 -st auto_consume -s "crud-subscriber" persistent://<NAME>-camp-const/astracdc/data-<REPLACE_WITH_ALPHANUMERIC>-crud_data.testing_crud
     ```
 
     > There will be quite a bit of output with the last few lines like below:

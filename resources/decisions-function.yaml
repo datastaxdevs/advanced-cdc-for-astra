@@ -4,6 +4,7 @@ parallelism: 1
 inputs:
   - persistent://<NAME>-camp-const/astracdc/conversion-output-topic
 output: persistent://<NAME>-camp-const/astracdc/decisions-output-topic
+autoAck: true
 tenant: <NAME>-camp-const
 namespace: astracdc
 name: decisions-function

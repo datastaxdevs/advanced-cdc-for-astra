@@ -4,6 +4,7 @@ parallelism: 1
 inputs:
   - persistent://<NAME>-camp-const/astracdc/data-<REPLACE_ME_WITH_ALPHANUMERIC>-crud_data.posts
 output: persistent://<NAME>-camp-const/astracdc/conversion-output-topic
+autoAck: true
 tenant: <NAME>-camp-const
 namespace: astracdc
 name: conversion-function

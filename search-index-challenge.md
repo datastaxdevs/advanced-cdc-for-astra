@@ -61,10 +61,11 @@ PRIMARY KEY ((id))
 Use `resources/elasticsearch-sink.yaml` in the Astra Streaming UI to create a new sink.
 
 ### Load Data
+
 Add a few posts
 
 ```bash
-SOURCE '/workspace/advanced-cdc-for-astra/resources/insert-2-posts.sql'
+SOURCE '/workspace/advanced-cdc-for-astra/resources/insert-posts.sql'
 ```
 
 ### Observe Index
@@ -79,7 +80,7 @@ SOURCE '/workspace/advanced-cdc-for-astra/resources/insert-2-posts.sql'
 
     ![image5](https://user-images.githubusercontent.com/16946028/160866922-3609aeb4-a1a4-4a87-935e-751cf6d21250.png)
 
-1. Name the data view to match the existing index "cdc_account_messages" and "Create data view"
+1. Find your index on the right, type in that name in the left text box, and save
 
     ![image14](https://user-images.githubusercontent.com/16946028/160867122-8e83732f-7531-44d9-a321-c266a74091d2.png)
 
