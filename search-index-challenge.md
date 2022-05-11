@@ -17,12 +17,10 @@ The basic outline you should follow to complete the challenge:
 Database schema to enable CDC
 
 ```sql
-CREATE TABLE IF NOT EXISTS crud_data.posts6 (
+CREATE TABLE IF NOT EXISTS crud_data.posts (
 id          int,
 postTypeId  int,
 title        text,
-body        text,
-creationDate timestamp,
 score       int,
 viewCount   int,
 answerCount int,
@@ -66,24 +64,28 @@ Use `resources/elasticsearch-sink.yaml` in the Astra Streaming UI to create a ne
 Add a few posts
 
 ```bash
-SOURCE './resources/insert-10-posts.sql'
+SOURCE '/workspace/advanced-cdc-for-astra/resources/insert-2-posts.sql'
 ```
 
 ### Observe Index
 
-1. Build a data view in Kibana
+1. Login to Elastic instance: [https://camp-constellation.kb.us-central1.gcp.cloud.es.io:9243/app/home#/](https://camp-constellation.kb.us-central1.gcp.cloud.es.io:9243/app/home#/)
 
-1. View the indexed data in Kibana
+1. In the Elasticsearch deployment choose "Management" > "Stack Management" from the left menu
 
-### Load Bulk Data
+    ![image12](https://user-images.githubusercontent.com/16946028/160866704-0d6dacfc-c35e-4271-b957-74fa314e37d9.png)
 
-1. Start to add a large batch of posts in the background
+1. Then choose "Kibana" > "Data Views" to get a prompt that you already have data in ElasticSearch. Choose "Create data view".
 
-    ```bash
-    ./resources/data-loader.sh -posts=100 -latency=1000
-    ```
+    ![image5](https://user-images.githubusercontent.com/16946028/160866922-3609aeb4-a1a4-4a87-935e-751cf6d21250.png)
 
-1. While that is running go back to Kibana and watch
+1. Name the data view to match the existing index "cdc_account_messages" and "Create data view"
+
+    ![image14](https://user-images.githubusercontent.com/16946028/160867122-8e83732f-7531-44d9-a321-c266a74091d2.png)
+
+1. Navigate to the "Discover" option of Analytics from the left menu
+
+    ![image6](https://user-images.githubusercontent.com/16946028/160867343-60ec87ac-db5c-461d-8a92-6307e752b14b.png)
 
 ## Summary
 
@@ -91,6 +93,4 @@ Armed with your new CDC skills go to your customers, ask for their architectures
 
 ## Troubleshooting
 
-- Notice the data table has a "tags" column of type `set<text>` but it was lost during conversion. Thats because the data type is currecntly supported by CDC for Astra, so it is quietly dropped.
-
-- Each function has its own logging topic. You could start a new consumer that watches a given logging topic to see exception details.
+- Each function and sink provide quite a bit of logging. You have the choice of either using the Astra UI to view output or you can use the `pulsar-admin` cli to query the logs topic.
