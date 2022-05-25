@@ -45,3 +45,5 @@ Challenge: Creating a site search index with CDC (30 minutes) [get started](/sea
 - Add a new tag to tags table
 - Using provided script, load 500 posts on a 0.5 second interval
 - Watch new indexes build
+
+![Challenge Diagram](/images/challenge-diagram.png)
